@@ -204,7 +204,8 @@ impl<P: Proposer> generic::Context for BftInstance<P> {
 	fn begin_round_timeout(&self, round: usize) -> Self::RoundTimeout {
 		use std::time::Duration;
 
-		let round = ::std::cmp::min(63, round) as u32;
+		let mut round = ::std::cmp::min(63, round) as u32;
+		round = round * 3 / self.authorities.len() as u32;
 		let timeout = 1u64.checked_shl(round)
 			.unwrap_or_else(u64::max_value)
 			.saturating_mul(self.round_timeout_multiplier);
