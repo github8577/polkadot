@@ -489,7 +489,7 @@ impl<C: PolkadotApi, N: Network> bft::ProposerFactory for ProposerFactory<C, N> 
 	fn init(&self, parent_header: &SubstrateHeader, authorities: &[AuthorityId], sign_with: Arc<ed25519::Pair>) -> Result<Self::Proposer, Error> {
 		use std::time::Duration;
 
-		const DELAY_UNTIL: Duration = Duration::from_millis(5000);
+		const DELAY_UNTIL: Duration = Duration::from_millis(0);
 
 		let parent_hash = parent_header.blake2_256().into();
 
