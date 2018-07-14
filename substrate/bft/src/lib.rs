@@ -324,7 +324,7 @@ impl<P, I> BftService<P, I>
 			client: client,
 			live_agreement: Mutex::new(None),
 			timer: Timer::default(),
-			round_timeout_multiplier: 4,
+			round_timeout_multiplier: 1,
 			key: key, // TODO: key changing over time.
 			factory: factory,
 		}
@@ -662,7 +662,7 @@ mod tests {
 			client: Arc::new(client),
 			live_agreement: Mutex::new(None),
 			timer: Timer::default(),
-			round_timeout_multiplier: 4,
+			round_timeout_multiplier: 1,
 			key: Arc::new(Keyring::One.into()),
 			factory: DummyFactory
 		}
