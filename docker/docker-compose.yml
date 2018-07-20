@@ -1,0 +1,15 @@
+version: '3'
+services:
+  sandbox:
+    # uses image build from Dockerfile in current directory
+    build:
+      context: .
+    ports:
+      # forward a range of exposed ports (host-machine:container)
+      # reference: https://docs.docker.com/compose/compose-file/#long-syntax-1
+      - "127.0.0.1:30333:30344/tcp"
+      - "127.0.0.1:9933:9944/tcp"
+    image: polkadot_sandbox:tag
+    volumes:
+      - .:/polkadot
+    command: tail -f /dev/null
