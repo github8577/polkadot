@@ -17,7 +17,7 @@ RUN apt-get update && \
 	rustup update stable && rustup default stable && \
 	cargo install --git https://github.com/alexcrichton/wasm-gc --force && \
 	cargo install --git https://github.com/pepyakin/wasm-export-table.git --force && \
-	apt-get install -y git vim curl && \
+	apt-get install -y git vim curl wget && \
 	git clone https://github.com/paritytech/polkadot.git && cd polkadot && \
 	git fetch origin ${POLKADOT_VERSION}:${POLKADOT_VERSION} && \
 	git checkout ${POLKADOT_VERSION} && \
