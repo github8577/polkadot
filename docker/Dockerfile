@@ -1,6 +1,3 @@
-# delete images - docker rmi $(docker images -q) -f
-# delete containers - docker rm $(docker ps -a -q) -f
-
 FROM phusion/baseimage:0.10.1
 LABEL maintainer "chevdor@gmail.com"
 
