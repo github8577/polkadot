@@ -24,10 +24,10 @@
 # Reference: https://stackoverflow.com/a/26064330/3208553
 
 # Enable dupe and install
-brew tap homebrew/dupes
-brew install homebrew/dupes/grep
-# Install the perl compatible regular expression library
-brew install pcre
+# brew tap homebrew/dupes
+# brew install homebrew/dupes/grep
+# # Install the perl compatible regular expression library
+# brew install pcre
 
 SUCCESS=0                      # if grep lookup succeeds
 
@@ -37,9 +37,9 @@ GREP_OPTS='-H -A 5 --color'
 # the text `version = "`, and excludes the `"` at the end of the line 
 TARGETSTR='((?<=version = ")(?!")([0-9].[0-9].[0-9]))'
 
-POLKADOT_VERSION=$(ggrep -P $GREP_OPTS "$TARGETSTR" "$CARGO_FILE")
+POLKADOT_VERSION_LINE=$(ggrep -P $GREP_OPTS "$TARGETSTR" "$CARGO_FILE" | head -1)
 
-echo
+POLKADOT_VERSION=$(printf '%s\n' "$POLKADOT_VERSION_LINE" | ggrep -oP '[0-9].[0-9].[0-9]')
 
 if [ $? -eq $SUCCESS ]
 then
