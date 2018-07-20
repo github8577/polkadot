@@ -37,13 +37,13 @@ GREP_OPTS='-H -A 5 --color'
 # the text `version = "`, and excludes the `"` at the end of the line 
 TARGETSTR='((?<=version = ")(?!")([0-9].[0-9].[0-9]))'
 
-POLKADOT_VERSION_LINE=$(ggrep -P $GREP_OPTS "$TARGETSTR" "$CARGO_FILE" | head -1)
+CARGO_POLKADOT_VERSION_LINE=$(ggrep -P $GREP_OPTS "$TARGETSTR" "$CARGO_FILE" | head -1)
 
-POLKADOT_VERSION=$(printf '%s\n' "$POLKADOT_VERSION_LINE" | ggrep -oP '[0-9].[0-9].[0-9]')
+CARGO_POLKADOT_VERSION=$(printf '%s\n' "$CARGO_POLKADOT_VERSION_LINE" | ggrep -oP '[0-9].[0-9].[0-9]')
 
 if [ $? -eq $SUCCESS ]
 then
-  echo "Polkadot version $POLKADOT_VERSION found in $CARGO_FILE"
+  echo "Polkadot version $CARGO_POLKADOT_VERSION found in $CARGO_FILE"
 else
   echo "Polkadot version not found in $CARGO_FILE"
 fi

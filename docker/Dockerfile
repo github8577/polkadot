@@ -1,7 +1,10 @@
 FROM phusion/baseimage:0.10.1
 LABEL maintainer "chevdor@gmail.com"
 
+# RUN echo $CARGO_POLKADOT_VERSION_FOR_DOCKERFILE
+# ARG POLKADOT_VERSION=v${CARGO_POLKADOT_VERSION_FOR_DOCKERFILE}
 ARG POLKADOT_VERSION=v0.2
+RUN echo $POLKADOT_VERSION
 RUN apt-get update && \
 	apt-get upgrade -y && \
 	apt-get install -y cmake pkg-config libssl-dev && \

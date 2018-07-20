@@ -13,3 +13,5 @@ services:
     volumes:
       - .:/polkadot
     command: tail -f /dev/null
+    environment:
+      - CARGO_POLKADOT_VERSION_FOR_DOCKERFILE=$CARGO_POLKADOT_VERSION_FOR_DOCKERFILE
